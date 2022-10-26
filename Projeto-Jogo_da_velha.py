@@ -30,10 +30,6 @@ frame3.grid(row=2, column=0)
 botao_jogar = Button(frame3, command=lambda: jogar(), width=54, height=1, text='  Jogar', anchor=CENTER, bg=preto, fg=branco, font='Arial 12', relief='flat')
 botao_jogar.place(x=2, y=1)
 
-# funcao iniciar
-def inicia():
-    janela.mainloop()
-
 def jogar():
     # configurando frame1
     jogador1 = Label(frame1, text='X', font='Arial 18 bold', bg=preto, fg=branco)
@@ -80,8 +76,8 @@ def jogar():
     linha1_vertical1= Label(frame2, width=1, height=80, font='Arial 1', bg=cinza)
     linha1_vertical1.place(x=220, y=50)
 
-    linha1_vertical2= Label(frame2, width=1, height=80, font='Arial 1', bg=cinza)
-    linha1_vertical2.place(x=280, y=50)
+    linha2_vertical= Label(frame2, width=1, height=80, font='Arial 1', bg=cinza)
+    linha2_vertical.place(x=280, y=50)
     
     # botoes choices
     botao_choicex_1 = Button(frame2, command= lambda: clica(botao_choicex_1), width=3, height=1, text=None, anchor=CENTER, font='Arial 16 bold', bg=cinza2, fg=preto, relief=FLAT)
@@ -112,40 +108,197 @@ def jogar():
     botao_choicex_9.place(x=290, y=168)
 
     global jogada
-    jogada = 9
+    jogada = 1
  
     def clica(botao_clicado):
         global jogada
         impar = [1, 3, 5, 7, 9]
-        par = [2, 4, 6, 8]
-        if jogada > 0:
+        par = [2, 4, 6, 8, 10]
+
+        if jogada < 10:
             if jogada in impar:
                 vez_de_jogador['text'] = 'X'
                 vez_jogador1['bg'] = azul
                 vez_jogador2['bg'] = preto
 
                 botao_clicado['text'] = 'X'
-                jogada -= 1
+                jogada += 1
                 
                 vez_de_jogador['text'] = 'O'
                 vez_jogador1['bg'] = preto
                 vez_jogador2['bg'] = azul
                 
+                # horizontal
+                if botao_choicex_1['text'] == 'X' and botao_choicex_2['text'] == 'X' and botao_choicex_3['text'] == 'X':
+                    vencedor = Label(frame2, text='X Venceu!', font='Arial 18 bold', bg=preto, fg=branco)
+                    vencedor.place(x=190, y=108)
+
+                    linha1_horizontal.destroy(), linha2_horizontal.destroy(), linha1_vertical1.destroy(), linha2_vertical.destroy()
+                    botao_choicex_1.destroy(), botao_choicex_2.destroy(), botao_choicex_3.destroy()
+                    botao_choicex_4.destroy(), botao_choicex_5.destroy(), botao_choicex_6.destroy()
+                    botao_choicex_7.destroy(), botao_choicex_8.destroy(), botao_choicex_9.destroy()
+                    
+                    botao_reinicia = Button(frame3, command=lambda: jogar(), width=54, height=1, text='  Reiniciar', anchor=CENTER, bg=preto, fg=branco, font='Arial 12', relief='flat')
+                    botao_reinicia.place(x=2, y=1)
+
+                elif botao_choicex_4['text'] == 'X' and botao_choicex_5['text'] == 'X' and botao_choicex_6['text'] == 'X':
+                    vencedor = Label(frame2, text='X Venceu!', font='Arial 18 bold', bg=preto, fg=branco)
+                    vencedor.place(x=190, y=108)
+
+                    linha1_horizontal.destroy(), linha2_horizontal.destroy(), linha1_vertical1.destroy(), linha2_vertical.destroy()
+                    botao_choicex_1.destroy(), botao_choicex_2.destroy(), botao_choicex_3.destroy()
+                    botao_choicex_4.destroy(), botao_choicex_5.destroy(), botao_choicex_6.destroy()
+                    botao_choicex_7.destroy(), botao_choicex_8.destroy(), botao_choicex_9.destroy()
+
+                elif botao_choicex_7['text'] == 'X' and botao_choicex_8['text'] == 'X' and botao_choicex_9['text'] == 'X':
+                    vencedor = Label(frame2, text='X Venceu!', font='Arial 18 bold', bg=preto, fg=branco)
+                    vencedor.place(x=190, y=108)
+                    
+                    linha1_horizontal.destroy(), linha2_horizontal.destroy(), linha1_vertical1.destroy(), linha2_vertical.destroy()
+                    botao_choicex_1.destroy(), botao_choicex_2.destroy(), botao_choicex_3.destroy()
+                    botao_choicex_4.destroy(), botao_choicex_5.destroy(), botao_choicex_6.destroy()
+                    botao_choicex_7.destroy(), botao_choicex_8.destroy(), botao_choicex_9.destroy()
+
+                
+                # diagonal
+                elif botao_choicex_1['text'] == 'X' and botao_choicex_5['text'] == 'X' and botao_choicex_9['text'] == 'X':
+                    vencedor = Label(frame2, text='X Venceu!', font='Arial 18 bold', bg=preto, fg=branco)
+                    vencedor.place(x=190, y=108)
+                    
+                    linha1_horizontal.destroy(), linha2_horizontal.destroy(), linha1_vertical1.destroy(), linha2_vertical.destroy()
+                    botao_choicex_1.destroy(), botao_choicex_2.destroy(), botao_choicex_3.destroy()
+                    botao_choicex_4.destroy(), botao_choicex_5.destroy(), botao_choicex_6.destroy()
+                    botao_choicex_7.destroy(), botao_choicex_8.destroy(), botao_choicex_9.destroy()
+
+
+                elif botao_choicex_7['text'] == 'X' and botao_choicex_5['text'] == 'X' and botao_choicex_3['text'] == 'X':
+                    vencedor = Label(frame2, text='X Venceu!', font='Arial 18 bold', bg=preto, fg=branco)
+                    vencedor.place(x=190, y=108)
+
+                    linha1_horizontal.destroy(), linha2_horizontal.destroy(), linha1_vertical1.destroy(), linha2_vertical.destroy()
+                    botao_choicex_1.destroy(), botao_choicex_2.destroy(), botao_choicex_3.destroy()
+                    botao_choicex_4.destroy(), botao_choicex_5.destroy(), botao_choicex_6.destroy()
+                    botao_choicex_7.destroy(), botao_choicex_8.destroy(), botao_choicex_9.destroy()
+
+
+                # vertical
+                elif botao_choicex_1['text'] == 'X' and botao_choicex_4['text'] == 'X' and botao_choicex_7['text'] == 'X':
+                    vencedor = Label(frame2, text='X Venceu!', font='Arial 18 bold', bg=preto, fg=branco)
+                    vencedor.place(x=190, y=108)
+
+                    linha1_horizontal.destroy(), linha2_horizontal.destroy(), linha1_vertical1.destroy(), linha2_vertical.destroy()
+                    botao_choicex_1.destroy(), botao_choicex_2.destroy(), botao_choicex_3.destroy()
+                    botao_choicex_4.destroy(), botao_choicex_5.destroy(), botao_choicex_6.destroy()
+                    botao_choicex_7.destroy(), botao_choicex_8.destroy(), botao_choicex_9.destroy()
+
+                elif botao_choicex_2['text'] == 'X' and botao_choicex_5['text'] == 'X' and botao_choicex_8['text'] == 'X':
+                    vencedor = Label(frame2, text='X Venceu!', font='Arial 18 bold', bg=preto, fg=branco)
+                    vencedor.place(x=190, y=108)
+
+                    linha1_horizontal.destroy(), linha2_horizontal.destroy(), linha1_vertical1.destroy(), linha2_vertical.destroy()
+                    botao_choicex_1.destroy(), botao_choicex_2.destroy(), botao_choicex_3.destroy()
+                    botao_choicex_4.destroy(), botao_choicex_5.destroy(), botao_choicex_6.destroy()
+                    botao_choicex_7.destroy(), botao_choicex_8.destroy(), botao_choicex_9.destroy()
+
+                elif botao_choicex_3['text'] == 'X' and botao_choicex_6['text'] == 'X' and botao_choicex_9['text'] == 'X':
+                    vencedor = Label(frame2, text='X Venceu!', font='Arial 18 bold', bg=preto, fg=branco)
+                    vencedor.place(x=190, y=108)
+
+                    linha1_horizontal.destroy(), linha2_horizontal.destroy(), linha1_vertical1.destroy(), linha2_vertical.destroy()
+                    botao_choicex_1.destroy(), botao_choicex_2.destroy(), botao_choicex_3.destroy()
+                    botao_choicex_4.destroy(), botao_choicex_5.destroy(), botao_choicex_6.destroy()
+                    botao_choicex_7.destroy(), botao_choicex_8.destroy(), botao_choicex_9.destroy()
+                    
+
             elif jogada in par:
                 vez_de_jogador['text'] = 'O'
                 vez_jogador2['bg'] = azul
                 vez_jogador1['bg'] = preto
                 
                 botao_clicado['text'] = 'O'
-                jogada -= 1
+                botao_clicado['fg'] = branco
+                jogada += 1
 
                 vez_de_jogador['text'] = 'X'
                 vez_jogador1['bg'] = azul
                 vez_jogador2['bg'] = preto
-   
-            
 
+                # horizontal
+                if botao_choicex_1['text'] == 'O' and botao_choicex_2['text'] == 'O' and botao_choicex_3['text'] == 'O':
+                    vencedor = Label(frame2, text='O Venceu!', font='Arial 18 bold', bg=preto, fg=branco)
+                    vencedor.place(x=190, y=108)
 
+                    linha1_horizontal.destroy(), linha2_horizontal.destroy(), linha1_vertical1.destroy(), linha2_vertical.destroy()
+                    botao_choicex_1.destroy(), botao_choicex_2.destroy(), botao_choicex_3.destroy()
+                    botao_choicex_4.destroy(), botao_choicex_5.destroy(), botao_choicex_6.destroy()
+                    botao_choicex_7.destroy(), botao_choicex_8.destroy(), botao_choicex_9.destroy()
 
+                elif botao_choicex_4['text'] == 'O' and botao_choicex_5['text'] == 'O' and botao_choicex_6['text'] == 'O':
+                    vencedor = Label(frame2, text='O Venceu!', font='Arial 18 bold', bg=preto, fg=branco)
+                    vencedor.place(x=190, y=108)
 
-inicia()
+                    linha1_horizontal.destroy(), linha2_horizontal.destroy(), linha1_vertical1.destroy(), linha2_vertical.destroy()
+                    botao_choicex_1.destroy(), botao_choicex_2.destroy(), botao_choicex_3.destroy()
+                    botao_choicex_4.destroy(), botao_choicex_5.destroy(), botao_choicex_6.destroy()
+                    botao_choicex_7.destroy(), botao_choicex_8.destroy(), botao_choicex_9.destroy()
+
+                elif botao_choicex_7['text'] == 'O' and botao_choicex_8['text'] == 'O' and botao_choicex_9['text'] == 'O':
+                    vencedor = Label(frame2, text='O Venceu!', font='Arial 18 bold', bg=preto, fg=branco)
+                    vencedor.place(x=190, y=108)
+
+                    linha1_horizontal.destroy(), linha2_horizontal.destroy(), linha1_vertical1.destroy(), linha2_vertical.destroy()
+                    botao_choicex_1.destroy(), botao_choicex_2.destroy(), botao_choicex_3.destroy()
+                    botao_choicex_4.destroy(), botao_choicex_5.destroy(), botao_choicex_6.destroy()
+                    botao_choicex_7.destroy(), botao_choicex_8.destroy(), botao_choicex_9.destroy()
+                
+                # diagonal
+                elif botao_choicex_1['text'] == 'O' and botao_choicex_5['text'] == 'O' and botao_choicex_9['text'] == 'O':
+                    vencedor = Label(frame2, text='O Venceu!', font='Arial 18 bold', bg=preto, fg=branco)
+                    vencedor.place(x=190, y=108)
+
+                    linha1_horizontal.destroy(), linha2_horizontal.destroy(), linha1_vertical1.destroy(), linha2_vertical.destroy()
+                    botao_choicex_1.destroy(), botao_choicex_2.destroy(), botao_choicex_3.destroy()
+                    botao_choicex_4.destroy(), botao_choicex_5.destroy(), botao_choicex_6.destroy()
+                    botao_choicex_7.destroy(), botao_choicex_8.destroy(), botao_choicex_9.destroy()
+
+                elif botao_choicex_7['text'] == 'O' and botao_choicex_5['text'] == 'O' and botao_choicex_3['text'] == 'O':
+                    vencedor = Label(frame2, text='O Venceu!', font='Arial 18 bold', bg=preto, fg=branco)
+                    vencedor.place(x=190, y=108)
+
+                    linha1_horizontal.destroy(), linha2_horizontal.destroy(), linha1_vertical1.destroy(), linha2_vertical.destroy()
+                    botao_choicex_1.destroy(), botao_choicex_2.destroy(), botao_choicex_3.destroy()
+                    botao_choicex_4.destroy(), botao_choicex_5.destroy(), botao_choicex_6.destroy()
+                    botao_choicex_7.destroy(), botao_choicex_8.destroy(), botao_choicex_9.destroy()
+
+                # vertical
+                elif botao_choicex_1['text'] == 'O' and botao_choicex_4['text'] == 'O' and botao_choicex_7['text'] == 'O':
+                    vencedor = Label(frame2, text='O Venceu!', font='Arial 18 bold', bg=preto, fg=branco)
+                    vencedor.place(x=190, y=1080)
+                    
+                    linha1_horizontal.destroy(), linha2_horizontal.destroy(), linha1_vertical1.destroy(), linha2_vertical.destroy()
+                    botao_choicex_1.destroy(), botao_choicex_2.destroy(), botao_choicex_3.destroy()
+                    botao_choicex_4.destroy(), botao_choicex_5.destroy(), botao_choicex_6.destroy()
+                    botao_choicex_7.destroy(), botao_choicex_8.destroy(), botao_choicex_9.destroy()
+
+                elif botao_choicex_2['text'] == 'O' and botao_choicex_5['text'] == 'O' and botao_choicex_8['text'] == 'O':
+                    vencedor = Label(frame2, text='O Venceu!', font='Arial 18 bold', bg=preto, fg=branco)
+                    vencedor.place(x=190, y=108)
+
+                    linha1_horizontal.destroy(), linha2_horizontal.destroy(), linha1_vertical1.destroy(), linha2_vertical.destroy()
+                    botao_choicex_1.destroy(), botao_choicex_2.destroy(), botao_choicex_3.destroy()
+                    botao_choicex_4.destroy(), botao_choicex_5.destroy(), botao_choicex_6.destroy()
+                    botao_choicex_7.destroy(), botao_choicex_8.destroy(), botao_choicex_9.destroy() 
+
+                elif botao_choicex_3['text'] == 'O' and botao_choicex_6['text'] == 'O' and botao_choicex_9['text'] == 'O':
+                    vencedor = Label(frame2, text='O Venceu!', font='Arial 18 bold', bg=preto, fg=branco)
+                    vencedor.place(x=190, y=108)
+
+                    linha1_horizontal.destroy(), linha2_horizontal.destroy(), linha1_vertical1.destroy(), linha2_vertical.destroy()
+                    botao_choicex_1.destroy(), botao_choicex_2.destroy(), botao_choicex_3.destroy()
+                    botao_choicex_4.destroy(), botao_choicex_5.destroy(), botao_choicex_6.destroy()
+                    botao_choicex_7.destroy(), botao_choicex_8.destroy(), botao_choicex_9.destroy()
+    
+                    
+
+                
+janela.mainloop()
