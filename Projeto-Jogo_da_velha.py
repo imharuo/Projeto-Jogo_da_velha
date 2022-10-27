@@ -25,6 +25,7 @@ frame2.grid(row=1, column=0)
 frame3 = Frame(janela, width=500, height=40, bg=preto)
 frame3.grid(row=2, column=0)
 
+# botoes
 # botao inicia jogo
 botao_jogar = Button(frame3, command=lambda: jogar(), width=54, height=1, text='  Jogar', anchor=CENTER, bg=preto, fg=branco, font='Arial 12', relief='flat')
 botao_jogar.place(x=2, y=1)
@@ -67,7 +68,7 @@ def jogar():
     linha2_vertical= Label(frame2, width=1, height=80, font='Arial 1', bg=cinza)
     linha2_vertical.place(x=280, y=50)
     
-    # botoes
+    # botoes choices
     botao_choicex_1 = Button(frame2, command= lambda: clica(botao_choicex_1), width=3, height=1, text = '', anchor=CENTER, font='Arial 16 bold', bg=cinza2, fg=preto, relief=FLAT)
     botao_choicex_1.place(x=170, y=50)
 
@@ -253,12 +254,15 @@ def jogar():
                     vencedor = Label(frame2, text='O Venceu!', font='Arial 18 bold', bg=cinza2, fg=preto)
                     vencedor.place(x=190, y=108)
                     apagar() 
+                    botao_jogar_novamente = Button(frame3, command=lambda: jogar_novamente(), width=54, height=1, text='  Jogar Novamente', anchor=CENTER, bg=preto, fg=branco, font='Arial 12', relief='flat')
+                    botao_jogar_novamente.place(x=2, y=1)
 
                 elif botao_choicex_3['text'] == 'O' and botao_choicex_6['text'] == 'O' and botao_choicex_9['text'] == 'O':
-                    
                     vencedor = Label(frame2, text='O Venceu!', font='Arial 18 bold', bg=cinza2, fg=preto)
                     vencedor.place(x=190, y=108)
                     apagar()
+                    botao_jogar_novamente = Button(frame3, command=lambda: jogar_novamente(), width=54, height=1, text='  Jogar Novamente', anchor=CENTER, bg=preto, fg=branco, font='Arial 12', relief='flat')
+                    botao_jogar_novamente.place(x=2, y=1)
                 
                 elif jogada == 10:
                     vencedor = Label(frame2, text='Velha!', font='Arial 18 bold', bg=cinza2, fg=preto)
